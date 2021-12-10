@@ -8,6 +8,11 @@
 import Foundation
 
 public class Logger {
+    public enum Defaults {
+        public static let loggerName = "Default"
+        public static let logLevel = Logger.Level.debug
+    }
+    
     public enum Level: Int {
         case trace
         case debug
@@ -41,7 +46,7 @@ public class Logger {
     
     fileprivate struct Context {
         let file: String
-        let line: Int
+        let line: UInt
         
         var description: String {
             return "\((file as NSString).lastPathComponent):\(line)"
@@ -49,46 +54,47 @@ public class Logger {
     }
     
     public let name: String
-    public var minLevel: Level = .info
+    public var logLevel: Level = .info
     
-    public init(name: String = "Default", level: Level = .info) {
-        self.name = name.isEmpty ? "Default" : name
-        self.minLevel = level
+    public init(name: String, level: Level = Defaults.logLevel) {
+        self.name = name.isEmpty ? Defaults.loggerName : name
+        self.logLevel = level
     }
     
     @inline(__always)
-    public func trace(_ message: String, showContext: Bool = true, file: String = #file, line: Int = #line) {
+    public func trace(_ message: String, showContext: Bool = true, file: String = #file, line: UInt = #line) {
         handleLog(level: .trace, message: message, context: showContext ? Context(file: file, line: line) : nil)
     }
     
     @inline(__always)
-    public func debug(_ message: String, showContext: Bool = true, file: String = #file, line: Int = #line) {
+    public func debug(_ message: String, showContext: Bool = true, file: String = #file, line: UInt = #line) {
         handleLog(level: .debug, message: message, context: showContext ? Context(file: file, line: line) : nil)
     }
     
     @inline(__always)
-    public func info(_ message: String, showContext: Bool = true, file: String = #file, line: Int = #line) {
+    public func info(_ message: String, showContext: Bool = true, file: String = #file, line: UInt = #line) {
         handleLog(level: .info, message: message, context: showContext ? Context(file: file, line: line) : nil)
     }
     
     @inline(__always)
-    public func warn(_ message: String, showContext: Bool = true, file: String = #file, line: Int = #line) {
+    public func warn(_ message: String, showContext: Bool = true, file: String = #file, line: UInt = #line) {
         handleLog(level: .warn, message: message, context: showContext ? Context(file: file, line: line) : nil)
     }
     
     @inline(__always)
-    public func error(_ message: String, showContext: Bool = true, file: String = #file, line: Int = #line) {
+    public func error(_ message: String, showContext: Bool = true, file: String = #file, line: UInt = #line) {
         handleLog(level: .error, message: message, context: showContext ? Context(file: file, line: line) : nil)
     }
     
     @inline(__always)
-    public func fatal(_ message: String, showContext: Bool = true, file: String = #file, line: Int = #line) {
+    public func fatal(_ message: String, showContext: Bool = true, file: String = #file, line: UInt = #line) {
         handleLog(level: .fatal, message: message, context: showContext ? Context(file: file, line: line) : nil)
     }
     
     fileprivate func handleLog(level: Level, message: String, context: Context?) {
+        #if DEBUG
         // Current log level is lower than the one specified in config. Skip logging.
-        if level.rawValue < minLevel.rawValue {
+        if level.rawValue < logLevel.rawValue {
             return
         }
         
@@ -100,5 +106,6 @@ public class Logger {
             let prefix = [levelComponent, name].joined(separator: " ")
             print("\(prefix) - \(message)")
         }
+        #endif
     }
 }
