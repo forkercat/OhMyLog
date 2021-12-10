@@ -31,6 +31,11 @@ public enum Log {
     }
     
     @inline(__always)
+    public static func warn(_ message: String, showContext: Bool = true, file: String = #file, line: UInt = #line) {
+        logger.warn(message, showContext: showContext, file: file, line: line)
+    }
+    
+    @inline(__always)
     public static func info(_ message: String, showContext: Bool = true, file: String = #file, line: UInt = #line) {
         logger.info(message, showContext: showContext, file: file, line: line)
     }
