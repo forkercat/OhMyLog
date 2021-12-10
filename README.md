@@ -1,11 +1,11 @@
 # OhMyLog
 
-OhMyLog is a simple logging package for Swift. It supports the following feature:
+OhMyLog is a simple logging package for Swift. It supports the following features:
 
 - Six logging levels (👣, 🔍, 💡, ⚠️, 🚨, 💊)
 - Display log context including filename and line number
 
-## Install
+## Install🔧
 
 You package file would be like:
 
@@ -27,7 +27,7 @@ let package = Package(
 )
 ```
 
-## Usage
+## Usage😆
 
 ### Option 1: Use Logger object
 
