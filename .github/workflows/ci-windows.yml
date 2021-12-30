@@ -10,11 +10,10 @@ jobs:
   windows-build-release:
     runs-on: windows-latest
     steps:
-    - name: Setup Swift in Windows
-      uses: rinsuki/setup-swift-windows@0.1.1
+    - uses: actions/checkout@v2
+    - uses: compnerd/gha-setup-swift@main
       with:
-        version: 5.4.2
-    - name: Checkout
-      uses: actions/checkout@main
+        branch: swift-5.5-release
+        tag: 5.5-RELEASE
     - name: Build Release
       run: swift build -c release

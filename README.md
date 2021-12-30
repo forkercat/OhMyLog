@@ -1,9 +1,12 @@
 # OhMyLog
 
-[![macOS](https://github.com/forkercat/OhMyLog/actions/workflows/macos.yml/badge.svg)](https://github.com/forkercat/OhMyLog/actions/workflows/macos.yml)
-[![Windows](https://github.com/forkercat/OhMyLog/actions/workflows/windows.yml/badge.svg)](https://github.com/forkercat/OhMyLog/actions/workflows/windows.yml)
-[![Linux](https://github.com/forkercat/OhMyLog/actions/workflows/linux.yml/badge.svg)](https://github.com/forkercat/OhMyLog/actions/workflows/linux.yml)
-[![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)  
+[![macOS](https://github.com/forkercat/OhMyLog/actions/workflows/ci-macos.yml/badge.svg)](https://github.com/forkercat/OhMyLog/actions/workflows/ci-macos.yml)
+[![Linux](https://github.com/forkercat/OhMyLog/actions/workflows/ci-linux.yml/badge.svg)](https://github.com/forkercat/OhMyLog/actions/workflows/ci-linux.yml)
+[![Windows](https://github.com/forkercat/OhMyLog/actions/workflows/ci-windows.yml/badge.svg)](https://github.com/forkercat/OhMyLog/actions/workflows/ci-windows.yml)
+[![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
+
+[![platform-compatibility](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fforkercat%2FOhMyLog%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/forkercat/OhMyLog)
+[![swift-version-compatibility](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fforkercat%2FOhMyLog%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/forkercat/OhMyLog)
 
 OhMyLog is a simple logging package for Swift. It supports the following features:
 
@@ -26,7 +29,8 @@ let package = Package(
     ],
     
     targets: [
-        .executableTarget(
+        // For Swift 5.5, use .executableTarget
+        .target(
             name: "YourPackageName",
             dependencies: [
                 .product(name: "OhMyLog", package: "OhMyLog")
