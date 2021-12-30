@@ -1,0 +1,20 @@
+name: Windows
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  windows-build-release:
+    runs-on: windows-latest
+    steps:
+    - name: Setup Swift in Windows
+      uses: rinsuki/setup-swift-windows@0.1.1
+      with:
+        version: 5.4.2
+    - name: Checkout
+      uses: actions/checkout@main
+    - name: Build Release
+      run: swift build -c release

@@ -1,8 +1,13 @@
 # OhMyLog
 
+[![macOS](https://github.com/forkercat/OhMyLog/actions/workflows/macos.yml/badge.svg)](https://github.com/forkercat/OhMyLog/actions/workflows/macos.yml)
+[![Windows](https://github.com/forkercat/OhMyLog/actions/workflows/windows.yml/badge.svg)](https://github.com/forkercat/OhMyLog/actions/workflows/windows.yml)
+[![Linux](https://github.com/forkercat/OhMyLog/actions/workflows/linux.yml/badge.svg)](https://github.com/forkercat/OhMyLog/actions/workflows/linux.yml)
+[![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)  
+
 OhMyLog is a simple logging package for Swift. It supports the following features:
 
-- Six logging levels: TRACE🟤, DEBUG🟢, INFO⚪️, WARN🟡, ERROR🔴, FATAL🚨
+- Six logging levels: TRACE 🟤, DEBUG 🟢, INFO ⚪️, WARN 🟡, ERROR 🔴, FATAL 🚨
 - Display log context including filename and line number
 - Show time
 - Output string or any object directly similar to `print()`
