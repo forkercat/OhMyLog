@@ -2,10 +2,13 @@
 
 OhMyLog is a simple logging package for Swift. It supports the following features:
 
-- Six logging levels (👣, 🔍, 💡, ⚠️, 🚨, 💊)
+- Six logging levels: TRACE🟤, DEBUG🟢, INFO⚪️, WARN🟡, ERROR🔴, FATAL🚨
 - Display log context including filename and line number
+- Show time
+- Output string or any object directly similar to `print()`
+- Toogle display of level icons and context information
 
-## Install🔧
+## 🔧 Install
 
 You package file would be like:
 
@@ -27,17 +30,19 @@ let package = Package(
 )
 ```
 
-## Usage😆
+## 😆 Usage
 
-### Option 1: Use Logger object
+### Option 1️⃣: Use Logger object
 
 ```swift
 import OhMyLog
 
+var logger = Logger(name: "Example-1", level: .info)
+logger.logLevel = .trace
+logger.showLevelIcon = true
+
 let list = ["Oh", "My", "Log"]
 
-var logger = Logger(name: "MyProject", level: .info)
-logger.logLevel = .trace
 logger.trace("Hello, World! \(list)")
 logger.debug("Hello, World! \(list)")
 logger.info("Hello, World! \(list)")
@@ -46,30 +51,35 @@ logger.error("Hello, World! \(list)")
 logger.fatal("Hello, World! \(list)")
 
 // Output
-[👣TRACE] MyProject main.swift:24 - Hello, World! ["Oh", "My", "Log"]
-[🔍DEBUG] MyProject main.swift:25 - Hello, World! ["Oh", "My", "Log"]
-[💡INFO ] MyProject main.swift:26 - Hello, World! ["Oh", "My", "Log"]
-[⚠️WARN ] MyProject main.swift:27 - Hello, World! ["Oh", "My", "Log"]
-[🚨ERROR] MyProject main.swift:28 - Hello, World! ["Oh", "My", "Log"]
-[💊FATAL] MyProject main.swift:29 - Hello, World! ["Oh", "My", "Log"]
+🟤 [06:52:31.672] TRACE Example-1: Hello, World! ["Oh", "My", "Log"]
+🟢 [06:52:31.672] DEBUG Example-1: Hello, World! ["Oh", "My", "Log"]
+⚪️ [06:52:31.673] INFO^ Example-1: Hello, World! ["Oh", "My", "Log"]
+🟡 [06:52:31.673] WARN^ Example-1: Hello, World! ["Oh", "My", "Log"]
+🔴 [06:52:31.673] ERROR Example-1: Hello, World! ["Oh", "My", "Log"]
+🚨 [06:52:31.673] FATAL Example-1: Hello, World! ["Oh", "My", "Log"]
 ```
 
-### Option 2: Use Log namespace
+### Option 2️⃣: Use Log namespace
 
 ```swift
 import OhMyLog
 
-let list = ["Oh", "My", "Log"]
-
-Log.registerLogger(name: "MyProject", level: .info)
+Log.registerLogger(name: "Example-2", level: .info)
 Log.setLevel(level: .info)
 Log.info("Hello, World! \(list)")
+Log.logLevel = .trace
+Log.showLevelIcon(enabled: false)
+
+let list = ["Oh", "My", "Log"]
+Log.info("\(list)")
+Log.warn(list)
 
 // Output
-[💡INFO ] MyProject main.swift:26 - Hello, World! ["Oh", "My", "Log"]
+[INFO^] [06:52:31.673] Example-2 main.swift:26 - Hello, World! ["Oh", "My", "Log"]
+[WARN^] [06:52:31.674] Example-2 main.swift:26 - Hello, World! ["Oh", "My", "Log"]
 ```
 
-### Option 3: Without import (recommended)
+### Option 3️⃣: Without import
 
 Create a swift source file in your project with two lines.
 
@@ -82,16 +92,19 @@ typealias Log = OhMyLog.Log
 Now you are able to log without `import OhMyLog`.
 
 ```swift
-let list = ["Oh", "My", "Log"]
-
-Log.registerLogger(name: "MyProject", level: .info)
+Log.registerLogger(name: "Example-3", level: .info)
 Log.setLevel(level: .info)
-Log.info("Hello, World! \(list)")
+
+let six = 666
+
+Log.trace(030)
+Log.info(six)
 
 // Output
-[💡INFO ] MyProject main.swift:26 - Hello, World! ["Oh", "My", "Log"]
+🟤 [06:52:31.673] TRACE Example-3: 30
+⚪️ [06:52:31.673] INFO^ Example-3: 666
 ```
 
-## Reference
+## 🙏 Reference
 
 - [How To Do Logging In Swift The Right Way | How To Create A Custom Logging Utility](https://www.youtube.com/watch?v=Ao6jkaV_9Kc&ab_channel=AryamanSharda)
