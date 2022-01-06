@@ -62,8 +62,8 @@ logger.fatal("Hello, World! \(list)")
 // Output
 🟤 [06:52:31.672] TRACE Example-1: Hello, World! ["Oh", "My", "Log"]
 🟢 [06:52:31.672] DEBUG Example-1: Hello, World! ["Oh", "My", "Log"]
-⚪️ [06:52:31.673] INFO^ Example-1: Hello, World! ["Oh", "My", "Log"]
-🟡 [06:52:31.673] WARN^ Example-1: Hello, World! ["Oh", "My", "Log"]
+⚪️ [06:52:31.673] INFO Example-1: Hello, World! ["Oh", "My", "Log"]
+🟡 [06:52:31.673] WARN Example-1: Hello, World! ["Oh", "My", "Log"]
 🔴 [06:52:31.673] ERROR Example-1: Hello, World! ["Oh", "My", "Log"]
 🚨 [06:52:31.673] FATAL Example-1: Hello, World! ["Oh", "My", "Log"]
 ```
@@ -84,8 +84,8 @@ Log.info("\(list)")
 Log.warn(list)
 
 // Output
-[INFO^] [06:52:31.673] Example-2 main.swift:26 - Hello, World! ["Oh", "My", "Log"]
-[WARN^] [06:52:31.674] Example-2 main.swift:26 - Hello, World! ["Oh", "My", "Log"]
+[INFO] [06:52:31.673] Example-2 main.swift:26 - Hello, World! ["Oh", "My", "Log"]
+[WARN] [06:52:31.674] Example-2 main.swift:26 - Hello, World! ["Oh", "My", "Log"]
 ```
 
 ### Option 3️⃣: Without import
@@ -111,7 +111,7 @@ Log.info(six)
 
 // Output
 🟤 [06:52:31.673] TRACE Example-3: 30
-⚪️ [06:52:31.673] INFO^ Example-3: 666
+⚪️ [06:52:31.673] INFO Example-3: 666
 ```
 
 ## 🙏 Reference

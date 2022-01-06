@@ -27,8 +27,8 @@ public class Logger {
             switch self {
             case .trace:  return "TRACE"
             case .debug:  return "DEBUG"
-            case .info:   return "INFO^"
-            case .warn:   return "WARN^"
+            case .info:   return "INFO"
+            case .warn:   return "WARN"
             case .error:  return "ERROR"
             case .fatal:  return "FATAL"
             }
