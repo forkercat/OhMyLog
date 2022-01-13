@@ -1,4 +1,4 @@
-# OhMyLog
+# OhMyLog: Simple Logging Package in Swift 📋
 
 [![macOS](https://github.com/forkercat/OhMyLog/actions/workflows/ci-macos.yml/badge.svg)](https://github.com/forkercat/OhMyLog/actions/workflows/ci-macos.yml)
 [![Linux](https://github.com/forkercat/OhMyLog/actions/workflows/ci-linux.yml/badge.svg)](https://github.com/forkercat/OhMyLog/actions/workflows/ci-linux.yml)
